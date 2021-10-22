@@ -1,3 +1,6 @@
-# @straw-hat/CHANGE_ME_PACKAGE_NAME
+# @straw-hat/goat
+
+Another Functional Programming Library, fully inspired by [ramdajs](https://ramdajs.com/).
 
 ## Usage
+

@@ -1,10 +1,10 @@
 {
-  "name": "@straw-hat/CHANGE_ME_PACKAGE_NAME",
+  "name": "@straw-hat/goat",
   "version": "0.0.1",
-  "description": "CHANGE_ME_DESCRIPTION",
+  "description": "Another Functional Programming Library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/straw-hat-team/CHANGE_ME_REPO_NAME.git"
+    "url": "https://github.com/straw-hat-team/goat.git"
   },
   "license": "MIT",
   "keywords": [
@@ -27,12 +27,12 @@
     "README.md"
   ],
   "devDependencies": {
-    "@straw-hat/tsconfig": "^2.1.0",
-    "@straw-hat/prettier-config": "^1.1.0",
-    "@types/jest": "^26.0.14",
-    "jest": "^26.5.0",
+    "@straw-hat/prettier-config": "^2.0.1",
+    "@straw-hat/tsconfig": "^2.3.1",
+    "@types/jest": "^27.0.2",
+    "jest": "^27.3.1",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.4.1",
-    "typescript": "^4.0.3"
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
   }
 }
