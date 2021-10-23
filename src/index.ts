@@ -1,3 +1,1 @@
-export function main() {
-  return 'Hello, World! 🚀';
-}
+export * from './identity';
