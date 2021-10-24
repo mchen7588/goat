@@ -19,3 +19,16 @@ jobs:
         cache: yarn
     - run: yarn ci:install
     - run: yarn ci:test:jest
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: yarn
+      - run: yarn ci:install
+      - run: yarn ci:prettier
