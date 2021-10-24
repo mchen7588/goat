@@ -17,7 +17,10 @@
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "ci:install": "yarn install --frozen-lockfile",
+    "ci:test:jest": "yarn test --ci --coverage",
+    "ci:prettier": "prettier --check */** --ignore-unknown --no-error-on-unmatched-pattern"
   },
   "type": "commonjs",
   "main": "dist/index.js",
