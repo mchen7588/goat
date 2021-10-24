@@ -1,1 +1,5 @@
-export function identity<T>(value: T) {}
+export function identity<T>(value: T) {
+  return () => {
+    return value
+  }
+}
