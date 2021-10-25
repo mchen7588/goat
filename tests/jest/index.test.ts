@@ -31,7 +31,7 @@ describe('groupBy', () => {
       { name: 'Jack', score: 43 },
       { name: 'Jack', score: 100 },
     ];
-    const byFirstName = groupBy((person) => person.name);
+    const byFirstName = groupBy((person: any) => person.name);
 
     // When
     const actual = byFirstName(students);
