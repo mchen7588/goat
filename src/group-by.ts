@@ -3,17 +3,21 @@
  * calling a String-returning function on each element, and grouping the
  * results according to values returned.
  */
-export function groupBy(fn: Function) {
-  return (list: any[]) => {
-    return list.reduce((acc, cur) => {
-      const currentGroupKey = fn(cur);
+export function groupBy<T, K extends string = string>(fn: (item: T) => K) {
+  return function (list: T[]) {
+    const acc = {} as Record<K, T[]>;
 
-      if (!acc[currentGroupKey]) {
-        acc[currentGroupKey] = [];
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      const key = fn(item);
+
+      if (!acc[key]) {
+        acc[key] = [];
       }
-      acc[currentGroupKey].push(cur);
 
-      return acc;
-    }, {});
+      acc[key].push(item);
+    }
+
+    return acc;
   };
 }
