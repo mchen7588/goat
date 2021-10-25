@@ -4,5 +4,16 @@
  * results according to values returned.
  */
 export function groupBy(fn: Function) {
-  return () => {};
+  return (list: any[]) => {
+    return list.reduce((acc, cur) => {
+      const currentGroupKey = fn(cur);
+
+      if (!acc[currentGroupKey]) {
+        acc[currentGroupKey] = [];
+      }
+      acc[currentGroupKey].push(cur);
+
+      return acc;
+    }, {});
+  };
 }
