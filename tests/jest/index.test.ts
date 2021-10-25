@@ -1,4 +1,5 @@
 import { groupBy, identity } from '../../src';
+import { compose } from '../../src/compose';
 
 describe('identity', () => {
   test('given 1 parameter then return the parameter supplied to it', () => {
@@ -48,5 +49,21 @@ describe('groupBy', () => {
         { name: 'Jack', score: 100 },
       ],
     });
+  });
+});
+
+describe('compose', () => {
+  test('given a list functions then performs right-to-left function composition', () => {
+    // Given
+    const multiplyByFive = compose(
+      (num: number) => num * 5,
+      (num: string) => parseInt(num)
+    );
+
+    // When
+    const actual = multiplyByFive('20');
+
+    // Then
+    expect(actual).toEqual(100);
   });
 });
