@@ -8,7 +8,7 @@ type LastInTuple<Tuple extends unknown[]> = Tuple[LengthOfTuple<DropFirstInTuple
 
 type ParametersOfLastInTuple<TFunctions extends AnyFunction[]> = Parameters<LastInTuple<TFunctions>>;
 
-type ReturnTypeOfFistInTuple<TFunctions extends AnyFunction[]> = ReturnType<TFunctions[0]>;
+type ReturnTypeOfFirstInTuple<TFunctions extends AnyFunction[]> = ReturnType<TFunctions[0]>;
 
 /**
  * Performs right-to-left function composition.
@@ -16,7 +16,7 @@ type ReturnTypeOfFistInTuple<TFunctions extends AnyFunction[]> = ReturnType<TFun
 export function compose<
   TFunctions extends AnyFunction[],
   TParameters extends ParametersOfLastInTuple<TFunctions>,
-  TReturn extends ReturnTypeOfFistInTuple<TFunctions>
+  TReturn extends ReturnTypeOfFirstInTuple<TFunctions>
 >(..._fns: TFunctions): (...args: TParameters) => TReturn {
   // @ts-ignore TODO: fix me
   return ;
