@@ -17,7 +17,15 @@ export function compose<
   TFunctions extends AnyFunction[],
   TParameters extends ParametersOfLastInTuple<TFunctions>,
   TReturn extends ReturnTypeOfFirstInTuple<TFunctions>
->(..._fns: TFunctions): (...args: TParameters) => TReturn {
+  //@ts-ignore
+>(...fns: TFunctions): (...args: TParameters) => TReturn {
   // @ts-ignore TODO: fix me
-  return;
+  return function (arg) {
+    let x = arg;
+    for (let i = fns.length - 1; i >= 0; i--) {
+      x = fns[i](x);
+    }
+
+    return x;
+  };
 }
