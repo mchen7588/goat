@@ -55,13 +55,15 @@ describe('groupBy', () => {
 describe('compose', () => {
   test('given a list functions then performs right-to-left function composition', () => {
     // Given
-    const multiplyByFive = compose(
-      (num: number) => num * 5,
-      (num: string) => parseInt(num)
+    const multiplyByFive = jest.fn((num: number) => num * 5)
+    const parseInteger = jest.fn((num: string, radix: number) => parseInt(num, radix));
+    const multiplyStringByFive = compose(
+      multiplyByFive,
+      parseInteger
     );
 
     // When
-    const actual = multiplyByFive('20');
+    const actual = multiplyStringByFive('20', 2);
 
     // Then
     expect(actual).toEqual(100);
