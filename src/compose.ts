@@ -19,5 +19,5 @@ export function compose<
   TReturn extends ReturnTypeOfFirstInTuple<TFunctions>
 >(..._fns: TFunctions): (...args: TParameters) => TReturn {
   // @ts-ignore TODO: fix me
-  return ;
+  return;
 }
