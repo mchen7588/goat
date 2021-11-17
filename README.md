@@ -4,3 +4,5 @@ Another Functional Programming Library, fully inspired by [ramdajs](https://ramd
 
 ## Usage
 
+- [Reference guides](./docs/reference/index.html) Please use `yarn docs:reference`
+  to generate the reference docs.
