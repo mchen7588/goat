@@ -18,6 +18,8 @@
     "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
     "prepublishOnly": "yarn build",
+    "docs:reference": "typedoc",
+    "format": "prettier --write */** --ignore-unknown --no-error-on-unmatched-pattern",
     "ci:install": "yarn install --frozen-lockfile",
     "ci:test:jest": "yarn test --ci --coverage",
     "ci:prettier": "prettier --check */** --ignore-unknown --no-error-on-unmatched-pattern"
@@ -37,6 +39,7 @@
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
+    "typedoc": "^0.22.9",
     "typescript": "^4.4.4"
   }
 }
