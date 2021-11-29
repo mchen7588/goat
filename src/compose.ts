@@ -20,10 +20,11 @@ export function compose<
   //@ts-ignore
 >(...fns: TFunctions): (...args: TParameters) => TReturn {
   // @ts-ignore TODO: fix me
-  return function (arg) {
+  return function (...arg) {
     let x = arg;
+
     for (let i = fns.length - 1; i >= 0; i--) {
-      x = fns[i](x);
+      x = fns[i](...arg);
     }
 
     return x;
