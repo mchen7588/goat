@@ -55,15 +55,24 @@ describe('groupBy', () => {
 describe('compose', () => {
   test('given a list functions then performs right-to-left function composition', () => {
     // Given
-    const multiplyByFive = jest.fn((num: number) => num * 5);
-    const parseInteger = jest.fn((num: string, radix: number) => parseInt(num, radix));
-    const multiplyStringByFive = compose(multiplyByFive, parseInteger);
+    const getLuckyMessage = jest.fn((num: number) => {
+      return `My lucky number was ${num}`;
+    });
+    const multiplyByFive = jest.fn((num: number) => {
+      return num * 5;
+    });
+    const parseInteger = jest.fn((num: string, radix: number) => {
+      return parseInt(num, radix);
+    });
+    const multiplyStringByFive = compose(getLuckyMessage, multiplyByFive, parseInteger);
 
     // When
-    const actual = multiplyStringByFive('20', 2);
+    const actual = multiplyStringByFive('20', 10);
 
     // Then
-    expect(actual).toEqual(100);
-    expect(parseInteger).toBeCalledWith('20', 2);
+    expect(actual).toEqual(`My lucky number was 100`);
+    expect(parseInteger).toBeCalledWith('20', 10);
+    expect(multiplyByFive).toBeCalledWith(20);
+    expect(getLuckyMessage).toBeCalledWith(100);
   });
 });

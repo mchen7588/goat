@@ -17,16 +17,18 @@ export function compose<
   TFunctions extends AnyFunction[],
   TParameters extends ParametersOfLastInTuple<TFunctions>,
   TReturn extends ReturnTypeOfFirstInTuple<TFunctions>
-  //@ts-ignore
 >(...fns: TFunctions): (...args: TParameters) => TReturn {
-  // @ts-ignore TODO: fix me
-  return function (...arg) {
-    let x = arg;
-
-    for (let i = fns.length - 1; i >= 0; i--) {
-      x = fns[i](...arg);
+  return function (...args) {
+    const list = fns.slice();
+    const firstFn = list.pop();
+    // @ts-ignore We don't check the length `fns` to avoid defensive programming
+    // checks, ignore TS2722 error.
+    let result = firstFn(...args);
+    while (list.length > 0) {
+      const nextFn = list.pop();
+      // @ts-ignore We check previously the length of `list`, ignore TS2722 error
+      result = nextFn(result);
     }
-
-    return x;
+    return result;
   };
 }
